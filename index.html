@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+	
+	#dynamic img {
+		margin: 2px 2px 2px 2px ;
+	} 
+	form {
+		margin: 10px 10px 10px 10px;
+	}
+	#three {
+		padding: 1px 1px 1px 1px;
+	}
+	body {
+		text-align: center;
+	}
+	input {
+		width: 5em;
+		height: 2em; 
+		border: 1px solid;
+		border-style: solid;
+    	border-color: black;
+    	border-radius: 5px;
+    	background-color: white;
+	}
+	#static  h1{
+		font-family: serif;
+		font-variant: small-caps;
+	}
+	#static p {
+		font-family: serif;
+	}
+
+</style>
+</head>
+<body>
+	<div id="static">
+		<h1>Roll Dice</h1>
+		<p id="count">Number of dice: 5</p>
+		<form>
+			<INPUT TYPE="button" NAME="button" Value="add" 
+		  onClick="add()">
+		  	<INPUT TYPE="button" NAME="button" Value="roll" 
+		  onClick="roll(counter)">
+		  	<INPUT TYPE="button" NAME="button" Value="minus" 
+		  onClick="subtract()"> <br>
+		</form>
+	</div>
+	<div id="dynamic">
+		<img src='dice6.png'/>
+		<img src='dice6.png'/>
+		<img src='dice6.png'/>
+		<img src='dice6.png'/>
+		<img src='dice6.png'/>
+	</div>
+
+	<script>
+var counter = 5;
+
+function roll(numDice){
+  var str = '';
+  for (var i = 0; i < numDice;i++){
+    dice();
+  }
+
+function dice(){
+	
+  var result = '';
+  var random = Math.random();
+  
+  if(random <= .16666){
+    result = "<img src='dice1.png'/>";
+  } else if (random <= .33333){
+	result = "<img src='dice2.png'/>";
+  } else if (random <= .5) {
+    result = "<img id ='three' src='dice3.png'/>";
+  } else if (random <= .66666) {
+    result = "<img src='dice4.png'/>";
+  } else if (random <= .83333) {
+    result = "<img src='dice5.png'/>";
+  } else {
+    result = "<img src='dice6.png'/>";
+  }
+  str += result;
+}
+  
+document.getElementById("dynamic").innerHTML = str;
+}
+
+function add(){
+	counter++;
+	document.getElementById("count").innerHTML = ("Number of dice: " + counter);
+}
+function subtract(){
+	counter--;
+	document.getElementById("count").innerHTML = ("Number of dice: " + counter);
+}
+	
+	</script>
+</body>
+</html>
